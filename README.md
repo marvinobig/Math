@@ -18,4 +18,5 @@ Learn maths with this console app.
 - do...while loops
 - for loops
 - Lists vs arrays
+- for...each loop
 
