@@ -3,6 +3,8 @@
 Console.Write("What is your name? ");
 string? username = Console.ReadLine();
 string[] availableChoices = new string[5] { "a", "s", "m", "d", "q" };
+int[] mathNumsList = { 23, 45, 56, 78, 23, 78, 46, 98, 2, 10 };
+List<string[]> history = new List<string[]>();
 
 Menu(username, 41);
 
@@ -26,10 +28,10 @@ try
     {
         Console.WriteLine("");
 
-        if (userChoice == "a") Addition("Addition game selected");
-        if (userChoice == "s") Subtraction("Subtraction game selected");
-        if (userChoice == "m") Multiplication("Multiplication game selected");
-        if (userChoice == "d") Division("Division game selected");
+        if (userChoice == "a") Addition("Addition game selected", mathNumsList, history);
+        if (userChoice == "s") Subtraction("Subtraction game selected", mathNumsList, history);
+        if (userChoice == "m") Multiplication("Multiplication game selected", mathNumsList, history);
+        if (userChoice == "d") Division("Division game selected", mathNumsList, history);
         if (userChoice == "q") Quit("Goodbye");
     }
 }
@@ -72,25 +74,188 @@ void Menu(string? username, int seperatorLineLength)
     Console.Write("Game Choice: ");
 }
 
-void Addition(string msg)
+void Addition(string msg, int[] mathNums, List<string[]> history)
 {
-    Random random = new Random();
     Console.WriteLine(msg);
+
+    Console.Write("How many questions do you want to answer? ");
+    string? userNumOfRounds = Console.ReadLine();
+
+    bool howManyRounds = int.TryParse(userNumOfRounds, out int numOfQuestions);
+
+    if (!howManyRounds) throw new Exception($"{userNumOfRounds} is not a number");
+
+    for (int i = 0; i < numOfQuestions; i++)
+    {
+        Random random = new Random();
+        int firstNum = mathNums[random.Next(10)];
+        int secondNum = mathNums[random.Next(10)];
+        int total = firstNum + secondNum;
+
+        Console.WriteLine("");
+        Console.Write($"What is {firstNum} + {secondNum} ? ");
+
+        string? userAnswer = Console.ReadLine();
+        bool isThisANumber = int.TryParse(userAnswer, out int result);
+
+        if (isThisANumber)
+        {
+            if (result == total)
+            {
+                string[] qaHistory = new string[5] { $"Game choice: Addition", $"Q: {firstNum} + {secondNum}", $"A: {total}", $"Your answer: {result}", "Status: Correct" };
+                history.Add(qaHistory);
+                Console.WriteLine($"Your answered: {result}. That is correct");
+            }
+            else
+            {
+                string[] qaHistory = { $"Game choice: Addition", $"Q: {firstNum} + {secondNum}", $"A: {total}", $"Your answer: {result}", "Status: Incorrect" };
+                history.Add(qaHistory);
+                Console.WriteLine($"That is incorrect. The correct answer is {total}");
+            }
+        }
+        else
+        {
+            throw new Exception($"The value '{userAnswer}' is not a number");
+        }
+    }
 }
 
-void Subtraction(string msg)
+void Subtraction(string msg, int[] mathNums, List<string[]> history)
 {
     Console.WriteLine(msg);
+
+    Console.Write("How many questions do you want to answer? ");
+    string? userNumOfRounds = Console.ReadLine();
+
+    bool howManyRounds = int.TryParse(userNumOfRounds, out int numOfQuestions);
+
+    if (!howManyRounds) throw new Exception($"{userNumOfRounds} is not a number");
+
+    for (int i = 0; i < numOfQuestions; i++)
+    {
+        Random random = new Random();
+        int firstNum = mathNums[random.Next(10)];
+        int secondNum = mathNums[random.Next(10)];
+        int total = firstNum - secondNum;
+
+        Console.WriteLine("");
+        Console.Write($"What is {firstNum} - {secondNum} ? ");
+
+        string? userAnswer = Console.ReadLine();
+        bool isThisANumber = int.TryParse(userAnswer, out int result);
+
+        if (isThisANumber)
+        {
+            if (result == total)
+            {
+                string[] qaHistory = new string[5] { $"Game choice: Subtraction", $"Q: {firstNum} - {secondNum}", $"A: {total}", $"Your answer: {result}", "Status: Correct" };
+                history.Add(qaHistory);
+                Console.WriteLine($"Your answered: {result}. That is correct");
+            }
+            else
+            {
+                string[] qaHistory = { $"Game choice: Subtraction", $"Q: {firstNum} - {secondNum}", $"A: {total}", $"Your answer: {result}", "Status: Incorrect" };
+                history.Add(qaHistory);
+                Console.WriteLine($"That is incorrect. The correct answer is {total}");
+            }
+        }
+        else
+        {
+            throw new Exception($"The value '{userAnswer}' is not a number");
+        }
+    }
 }
 
-void Multiplication(string msg)
+void Multiplication(string msg, int[] mathNums, List<string[]> history)
 {
     Console.WriteLine(msg);
+
+    Console.Write("How many questions do you want to answer? ");
+    string? userNumOfRounds = Console.ReadLine();
+
+    bool howManyRounds = int.TryParse(userNumOfRounds, out int numOfQuestions);
+
+    if (!howManyRounds) throw new Exception($"{userNumOfRounds} is not a number");
+
+    for (int i = 0; i < numOfQuestions; i++)
+    {
+        Random random = new Random();
+        int firstNum = mathNums[random.Next(10)];
+        int secondNum = mathNums[random.Next(10)];
+        int total = firstNum * secondNum;
+
+        Console.WriteLine("");
+        Console.Write($"What is {firstNum} x {secondNum} ? ");
+
+        string? userAnswer = Console.ReadLine();
+        bool isThisANumber = int.TryParse(userAnswer, out int result);
+
+        if (isThisANumber)
+        {
+            if (result == total)
+            {
+                string[] qaHistory = new string[5] { $"Game choice: Multiplication", $"Q: {firstNum} x {secondNum}", $"A: {total}", $"Your answer: {result}", "Status: Correct" };
+                history.Add(qaHistory);
+                Console.WriteLine($"Your answered: {result}. That is correct");
+            }
+            else
+            {
+                string[] qaHistory = { $"Game choice: Multiplication", $"Q: {firstNum} x {secondNum}", $"A: {total}", $"Your answer: {result}", "Status: Incorrect" };
+                history.Add(qaHistory);
+                Console.WriteLine($"That is incorrect. The correct answer is {total}");
+            }
+        }
+        else
+        {
+            throw new Exception($"The value '{userAnswer}' is not a number");
+        }
+    }
 }
 
-void Division(string msg)
+void Division(string msg, int[] mathNums, List<string[]> history)
 {
     Console.WriteLine(msg);
+
+    Console.Write("How many questions do you want to answer? ");
+    string? userNumOfRounds = Console.ReadLine();
+
+    bool howManyRounds = int.TryParse(userNumOfRounds, out int numOfQuestions);
+
+    if (!howManyRounds) throw new Exception($"{userNumOfRounds} is not a number");
+
+    for (int i = 0; i < numOfQuestions; i++)
+    {
+        Random random = new Random();
+        int firstNum = mathNums[random.Next(10)];
+        int secondNum = mathNums[random.Next(10)];
+        int total = firstNum + secondNum;
+
+        Console.WriteLine("");
+        Console.Write($"What is {firstNum} + {secondNum} ? ");
+
+        string? userAnswer = Console.ReadLine();
+        bool isThisANumber = int.TryParse(userAnswer, out int result);
+
+        if (isThisANumber)
+        {
+            if (result == total)
+            {
+                string[] qaHistory = new string[5] { $"Game choice: Division", $"Q: {firstNum} / {secondNum}", $"A: {total}", $"Your answer: {result}", "Status: Correct" };
+                history.Add(qaHistory);
+                Console.WriteLine($"Your answered: {result}. That is correct");
+            }
+            else
+            {
+                string[] qaHistory = { $"Game choice: Division", $"Q: {firstNum} / {secondNum}", $"A: {total}", $"Your answer: {result}", "Status: Incorrect" };
+                history.Add(qaHistory);
+                Console.WriteLine($"That is incorrect. The correct answer is {total}");
+            }
+        }
+        else
+        {
+            throw new Exception($"The value '{userAnswer}' is not a number");
+        }
+    }
 }
 
 void Quit(string msg)

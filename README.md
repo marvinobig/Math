@@ -17,4 +17,5 @@ Learn maths with this console app.
 - Debugging in Visual Studio
 - do...while loops
 - for loops
+- Lists vs arrays
 
