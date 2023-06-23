@@ -228,10 +228,10 @@ void Division(string msg, int[] mathNums, List<string[]> history)
         Random random = new Random();
         int firstNum = mathNums[random.Next(10)];
         int secondNum = mathNums[random.Next(10)];
-        int total = firstNum + secondNum;
+        int total = firstNum / secondNum;
 
         Console.WriteLine("");
-        Console.Write($"What is {firstNum} + {secondNum} ? ");
+        Console.Write($"What is {firstNum} \u00F7 {secondNum} ? ");
 
         string? userAnswer = Console.ReadLine();
         bool isThisANumber = int.TryParse(userAnswer, out int result);
@@ -240,13 +240,13 @@ void Division(string msg, int[] mathNums, List<string[]> history)
         {
             if (result == total)
             {
-                string[] qaHistory = new string[5] { $"Game choice: Division", $"Q: {firstNum} / {secondNum}", $"A: {total}", $"Your answer: {result}", "Status: Correct" };
+                string[] qaHistory = new string[5] { $"Game choice: Division", $"Q: {firstNum} \u00F7 {secondNum}", $"A: {total}", $"Your answer: {result}", "Status: Correct" };
                 history.Add(qaHistory);
                 Console.WriteLine($"Your answered: {result}. That is correct");
             }
             else
             {
-                string[] qaHistory = { $"Game choice: Division", $"Q: {firstNum} / {secondNum}", $"A: {total}", $"Your answer: {result}", "Status: Incorrect" };
+                string[] qaHistory = { $"Game choice: Division", $"Q: {firstNum} \u00F7 {secondNum}", $"A: {total}", $"Your answer: {result}", "Status: Incorrect" };
                 history.Add(qaHistory);
                 Console.WriteLine($"That is incorrect. The correct answer is {total}");
             }
