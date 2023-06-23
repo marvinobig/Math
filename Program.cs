@@ -118,6 +118,14 @@ void Addition(string msg, int[] mathNums, List<string[]> history)
             throw new Exception($"The value '{userAnswer}' is not a number");
         }
     }
+
+    Console.Clear();
+    Console.WriteLine("Question & Answer History:");
+
+    foreach (string[] questionAnswer in history)
+    {
+        DisplayHistory(questionAnswer);
+    }
 }
 
 void Subtraction(string msg, int[] mathNums, List<string[]> history)
@@ -163,6 +171,14 @@ void Subtraction(string msg, int[] mathNums, List<string[]> history)
         {
             throw new Exception($"The value '{userAnswer}' is not a number");
         }
+    }
+
+    Console.Clear();
+    Console.WriteLine("Question & Answer History:");
+
+    foreach (string[] questionAnswer in history)
+    {
+        DisplayHistory(questionAnswer);
     }
 }
 
@@ -210,6 +226,14 @@ void Multiplication(string msg, int[] mathNums, List<string[]> history)
             throw new Exception($"The value '{userAnswer}' is not a number");
         }
     }
+
+    Console.Clear();
+    Console.WriteLine("Question & Answer History:");
+
+    foreach (string[] questionAnswer in history)
+    {
+        DisplayHistory(questionAnswer);
+    }
 }
 
 void Division(string msg, int[] mathNums, List<string[]> history)
@@ -255,6 +279,24 @@ void Division(string msg, int[] mathNums, List<string[]> history)
         {
             throw new Exception($"The value '{userAnswer}' is not a number");
         }
+    }
+
+    Console.Clear();
+    Console.WriteLine("Question & Answer History:");
+
+    foreach (string[] questionAnswer in history)
+    {
+        DisplayHistory(questionAnswer);
+    }
+}
+
+void DisplayHistory(string[] history)
+{
+    Console.WriteLine("");
+
+    for (int i = 0;i < history.Length;i++)
+    {
+        Console.WriteLine(history[i]);
     }
 }
 
