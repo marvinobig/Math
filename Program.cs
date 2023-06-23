@@ -79,15 +79,32 @@ void Addition(string msg, int[] mathNums, List<string[]> history)
     Console.WriteLine(msg);
 
     Console.Write("How many questions do you want to answer? ");
-    string? userNumOfRounds = Console.ReadLine();
+    bool howManyRounds;
+    string? userNumOfRounds;
+    int numOfQuestions;
 
-    bool howManyRounds = int.TryParse(userNumOfRounds, out int numOfQuestions);
+    do
+    {
+        userNumOfRounds = Console.ReadLine();
+        howManyRounds = int.TryParse(userNumOfRounds, out int result);
+        numOfQuestions = result;
 
-    if (!howManyRounds) throw new Exception($"{userNumOfRounds} is not a number");
+        if (!howManyRounds)
+        {
+            Console.WriteLine("");
+            Console.Write($"{userNumOfRounds} is not a number, please enter one: ");
+        }
+        else if (numOfQuestions < 1)
+        {
+            Console.WriteLine("");
+            Console.Write($"You've chosen to answer {numOfQuestions} questions, please enter a number greater than 0: ");
+        }
+    }
+    while (!howManyRounds || numOfQuestions == 0 );
 
     for (int i = 0; i < numOfQuestions; i++)
     {
-        Random random = new Random();
+        Random random = new();
         int firstNum = mathNums[random.Next(10)];
         int secondNum = mathNums[random.Next(10)];
         int total = firstNum + secondNum;
@@ -133,11 +150,28 @@ void Subtraction(string msg, int[] mathNums, List<string[]> history)
     Console.WriteLine(msg);
 
     Console.Write("How many questions do you want to answer? ");
-    string? userNumOfRounds = Console.ReadLine();
+    bool howManyRounds;
+    string? userNumOfRounds;
+    int numOfQuestions;
 
-    bool howManyRounds = int.TryParse(userNumOfRounds, out int numOfQuestions);
+    do
+    {
+        userNumOfRounds = Console.ReadLine();
+        howManyRounds = int.TryParse(userNumOfRounds, out int result);
+        numOfQuestions = result;
 
-    if (!howManyRounds) throw new Exception($"{userNumOfRounds} is not a number");
+        if (!howManyRounds)
+        {
+            Console.WriteLine("");
+            Console.Write($"{userNumOfRounds} is not a number, please enter one: ");
+        }
+        else if (numOfQuestions < 1)
+        {
+            Console.WriteLine("");
+            Console.Write($"You've chosen to answer {numOfQuestions} questions, please enter a number greater than 0: ");
+        }
+    }
+    while (!howManyRounds || numOfQuestions == 0);
 
     for (int i = 0; i < numOfQuestions; i++)
     {
@@ -187,11 +221,28 @@ void Multiplication(string msg, int[] mathNums, List<string[]> history)
     Console.WriteLine(msg);
 
     Console.Write("How many questions do you want to answer? ");
-    string? userNumOfRounds = Console.ReadLine();
+    bool howManyRounds;
+    string? userNumOfRounds;
+    int numOfQuestions;
 
-    bool howManyRounds = int.TryParse(userNumOfRounds, out int numOfQuestions);
+    do
+    {
+        userNumOfRounds = Console.ReadLine();
+        howManyRounds = int.TryParse(userNumOfRounds, out int result);
+        numOfQuestions = result;
 
-    if (!howManyRounds) throw new Exception($"{userNumOfRounds} is not a number");
+        if (!howManyRounds)
+        {
+            Console.WriteLine("");
+            Console.Write($"{userNumOfRounds} is not a number, please enter one: ");
+        }
+        else if (numOfQuestions < 1)
+        {
+            Console.WriteLine("");
+            Console.Write($"You've chosen to answer {numOfQuestions} questions, please enter a number greater than 0: ");
+        }
+    }
+    while (!howManyRounds || numOfQuestions == 0);
 
     for (int i = 0; i < numOfQuestions; i++)
     {
@@ -241,11 +292,28 @@ void Division(string msg, int[] mathNums, List<string[]> history)
     Console.WriteLine(msg);
 
     Console.Write("How many questions do you want to answer? ");
-    string? userNumOfRounds = Console.ReadLine();
+    bool howManyRounds;
+    string? userNumOfRounds;
+    int numOfQuestions;
 
-    bool howManyRounds = int.TryParse(userNumOfRounds, out int numOfQuestions);
+    do
+    {
+        userNumOfRounds = Console.ReadLine();
+        howManyRounds = int.TryParse(userNumOfRounds, out int result);
+        numOfQuestions = result;
 
-    if (!howManyRounds) throw new Exception($"{userNumOfRounds} is not a number");
+        if (!howManyRounds)
+        {
+            Console.WriteLine("");
+            Console.Write($"{userNumOfRounds} is not a number, please enter one: ");
+        }
+        else if (numOfQuestions < 1)
+        {
+            Console.WriteLine("");
+            Console.Write($"You've chosen to answer {numOfQuestions} questions, please enter a number greater than 0: ");
+        }
+    }
+    while (!howManyRounds || numOfQuestions == 0);
 
     for (int i = 0; i < numOfQuestions; i++)
     {
@@ -298,6 +366,8 @@ void DisplayHistory(string[] history)
     {
         Console.WriteLine(history[i]);
     }
+
+    Console.WriteLine("");
 }
 
 void Quit(string msg)
