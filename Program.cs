@@ -42,7 +42,6 @@ catch (Exception err)
     Environment.Exit(1);
 }
 
-
 Console.WriteLine("Press any key to exit");
 Console.ReadLine();
 
