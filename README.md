@@ -1,6 +1,6 @@
 # Math
 
-Learn maths with this windows only console app.
+Learn maths with this windows only console app. 
 
 ## Topics learnt building this app
 
