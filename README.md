@@ -19,4 +19,9 @@ Learn maths with this console app.
 - for loops
 - Lists vs arrays
 - for...each loop
+- Classes & objects
+- Access modifiers
+- Namespaces
+- Static methods
+- Fields 
 
