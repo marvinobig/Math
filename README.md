@@ -24,4 +24,5 @@ Learn maths with this windows only console app.
 - Namespaces
 - Static methods
 - Fields 
+- Publishing Code
 
